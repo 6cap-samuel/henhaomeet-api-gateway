@@ -7,6 +7,7 @@ spring:
             allowedOrigins: ${CORS}
       routes:
         - id: ${MEETING_ROUTE_ID}
-          uri: ${MEETING_SERVICE_URL}
+          uri: ${MEETING_ROUTE_URI}
           predicates:
-            - Path=${MEETING_SERVICE_PREDICATE}
+            - Path=${MEETING_ROUTE_PREDICATE}
+

@@ -1,8 +1,12 @@
 spring:
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: ${CORS}
       routes:
-        - id: path_route
-          uri: https://dev.henhaochi.io/meeting
+        - id: ${MEETING_ROUTE_ID}
+          uri: ${MEETING_SERVICE_URL}
           predicates:
-            - Path=/meeting
+            - Path=${MEETING_SERVICE_PREDICATE}

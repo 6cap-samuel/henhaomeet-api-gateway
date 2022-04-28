@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: http://localhost:8080
+      routes:
+        - id: meeting-service
+          uri: https://dev.henhaochi.io/meeting
+          predicates:
+            - Path=/meeting
+server:
+  port: 8081

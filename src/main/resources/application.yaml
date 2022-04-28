@@ -11,3 +11,5 @@ spring:
           predicates:
             - Path=${MEETING_ROUTE_PREDICATE}
 
+server:
+  port: ${PORT}

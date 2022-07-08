@@ -1,4 +1,7 @@
 spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
   cloud:
     gateway:
       globalcors:
@@ -6,6 +9,14 @@ spring:
           '[/**]':
             allowedOrigins: ${CORS}
       routes:
+        - id: ${ACCOUNTS_ROUTE_ID}
+          uri: ${ACCOUNTS_ROUTE_URI}
+          predicates:
+            - Path=${ACCOUNTS_ROUTE_PREDICATE}
+        - id: ${AUTH_ROUTE_ID}
+          uri: ${AUTH_ROUTE_URI}
+          predicates:
+            - Path=${AUTH_ROUTE_PREDICATE}
         - id: ${MEETING_ROUTE_ID}
           uri: ${MEETING_ROUTE_URI}
           predicates:
@@ -13,3 +24,8 @@ spring:
 
 server:
   port: ${PORT}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG

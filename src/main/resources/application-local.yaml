@@ -6,6 +6,14 @@ spring:
           '[/**]':
             allowedOrigins: http://localhost:8080
       routes:
+        - id: accounts-service
+          uri: https://dev.henhaochi.io/accounts
+          predicates:
+            - Path=/accounts
+        - id: auth-service
+          uri: https://dev.henhaochi.io/auth
+          predicates:
+            - Path=/auth
         - id: meeting-service
           uri: https://dev.henhaochi.io/meeting
           predicates:

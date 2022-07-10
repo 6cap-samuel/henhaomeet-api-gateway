@@ -9,14 +9,19 @@ spring:
         - id: accounts-service
           uri: https://dev.henhaochi.io/accounts
           predicates:
-            - Path=/accounts
+            - Path=/accounts/**
         - id: auth-service
-          uri: https://dev.henhaochi.io/auth
+          uri: http://localhost:8082/auth
           predicates:
-            - Path=/auth
+            - Path=/auth/**
         - id: meeting-service
           uri: https://dev.henhaochi.io/meeting
           predicates:
-            - Path=/meeting
+            - Path=/meeting/**
 server:
   port: 8081
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
